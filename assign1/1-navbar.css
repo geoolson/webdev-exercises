@@ -4,4 +4,28 @@
   color: #333;
 }
 
+ul, li {
+  display: inline;
+}
+
+ul:first-child{
+  padding-left: 0em;
+}
+
+li {
+  padding-left: 1em;
+}
+
+li:focus, li:hover {
+  text-decoration: underline;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:focus, a:hover {
+  color: #008080;
+}
+
 /* The accent color used is #008080 */
