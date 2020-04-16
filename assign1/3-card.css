@@ -6,4 +6,39 @@ body {
 
 a {
   color: rgb(0, 96, 96);
+  text-decoration: none;
+}
+
+a:focus, a:hover {
+  text-decoration: underline;
+}
+
+ul, li {
+  display: inline-block;
+}
+
+.card {
+  width: 350px;
+  border: 1px;
+  border-style: solid;
+  border-color: #ccc;
+  margin: 1em;
+}
+
+.card.header, .card.body , .card.footer {
+  border-style: none;
+  width: 90%
+}
+
+.card > img {
+  width: 320px;
+}
+
+.card.header {
+  color: #555;
+  font-weight: 600;
+}
+
+.card.body {
+  font-size: 12px;
 }
