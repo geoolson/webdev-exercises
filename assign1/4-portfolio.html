@@ -9,6 +9,39 @@
   </head>
   <body>
     <!-- add your code below -->
-    <p>exercise #4 - getting started with the portfolio</p>
+    <ul class="header">
+      <li><a href="#">Home</a></li>
+      <li><a href="#" onclick="toggle('about')">About</a></li>
+      <li><a href="https://www.github.com/geoolson">Github</a></li>
+      <li><a href="#" onclick="toggle('khr1')">KHR1</a></li>
+    </ul>
+    <section style="text-align: center;">
+      <H1>Geoffrey Olson</H1>
+      <h2>geoolson@pdx.edu | <a href="https://www.linkedin.com/in/geoffrey-olson-jr-247097148" style="color: black">Linkedin</a> | <a href="https://www.github.com/geoolson" style="color: black;">Github</a>
+      </h2>
+      <div id="about" class="content">
+        <img src="http://placekitten.com/300/200"  alt="kitten">
+        I'm a senior undergraduate at PSU studying computer science. I'm currently an intern as well working in test automation. 
+        For fun I also like to work with robotics. 
+      </div>
+      <div id="khr1" class="content">
+        <img src="https://robotics.ece.pdx.edu/projects/images/khr1.png">
+        KHR1 is a robotics project I worked on for the Viking Robotics Society. KHR1 is a bi-pedal humanoid robot. For Khr1 I built an
+        application using the Xbox kinect camera to map a users gestures to servo positions. 
+      </div>
+    </section>
+    <div class="footer">
+      <a href="https://www.github.com/geoolson">Github</a>
+    </div>
   </body>
+  <script>
+    const toggle = id => {
+      const sections = ['khr1', 'about'];
+      sections
+        .filter(element => element !== id)
+        .forEach( element => document.getElementById(element).style.display = 'none');
+      const elem = document.getElementById(id);
+      elem.style.display = elem.style.display === "block" ? "none" : "block";
+    }
+  </script>
 </html>

@@ -1,0 +1,88 @@
+.header, .header > li, .footer, .footer >li {
+    text-align: center;
+    margin: 0px;
+    padding: 0.25em;
+    padding-left: 0em;
+    padding-right: 0em;
+    background-color: #0c0032;
+    color: white;
+    display: inline-block;
+}
+
+.header > li {
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:focus {
+    color: red;
+}
+
+body {
+    margin: 0px;
+    margin-bottom: 100px;
+    background-color: #aaa;
+}
+
+.header, .footer {
+    width: 100%;
+}
+
+.footer, .footer > li {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+h1 {
+    font-size: 50px;
+    margin-bottom: 0;
+    padding: none;
+}
+
+h2 {
+    font-size: 16px;
+}
+
+.content {
+    display: none;
+    margin: auto;
+    width: 500px;
+}
+
+.content > img {
+    margin: auto;
+    display: block;
+    width: 300px;
+}
+
+@media only screen and (max-width: 768px) {
+    .content {
+        width: 476px;
+    }
+    .content > img {
+        margin: auto;
+        display: block;
+        width: 300px;
+    }
+}
+
+@media only screen and (max-width: 476px) {
+    .content {
+        width: 400px;
+    }
+    .content > img {
+        margin: auto;
+        display: block;
+        width: 300px;
+    }
+}
