@@ -59,7 +59,23 @@ h2 {
     width: 500px;
 }
 
-.content > img {
+.content > figure > img, .content > img {
+    margin: auto;
+    display: block;
+    width: 300px;
+}
+
+.content > a {
+    color: blue;
+}
+
+figcaption {
+    font-size: 12px;
+    text-align: left;
+    padding-bottom: 0.5em;
+}
+
+figure {
     margin: auto;
     display: block;
     width: 300px;
@@ -69,7 +85,7 @@ h2 {
     .content {
         width: 476px;
     }
-    .content > img {
+    .content > figure > img, .content > img {
         margin: auto;
         display: block;
         width: 300px;
@@ -80,7 +96,7 @@ h2 {
     .content {
         width: 400px;
     }
-    .content > img {
+    .content > figure > img, .content > img {
         margin: auto;
         display: block;
         width: 300px;
