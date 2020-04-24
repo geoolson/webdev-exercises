@@ -73,6 +73,10 @@ h2 {
     color: blue;
 }
 
+.content > p {
+    text-align: left;
+}
+
 figcaption {
     font-size: 12px;
     text-align: left;
