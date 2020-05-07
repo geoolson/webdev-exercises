@@ -6,14 +6,24 @@
 - Card exercise
 - Portfolio exercise
 
-### Assignment 2 - Layouts
-- to be posted week #2
+### Assignment 2 - Layout
+- Flexbox exercise
+- Flexbox exercise
+- CSS Grid exercise
+- CSS Grid exercise
+- Bootstrap Grid exercise
+- Bootstrap Form exercise
 
-### Assignment 3 - JavaScript and DOM Manipulations
-- to be posted week #3
+### Assignment 3 - JavaScript
+- Fizzbuzz exercise
+- Reverse exercise
+- Form exercise
+- Events exercise
+- Rest Countries exercise
+- PokeAPI exercise
 
-### Assignment 4 - Node and Express
-- to be posted week #4
+### Assignment 4 - Node, Express, Frameworks
+- to be posted week #6
 
 Check D2L or Drive for more details on each assignment
 
