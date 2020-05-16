@@ -8,12 +8,15 @@ const indexPage = fs.readFileSync('index.html', 'utf8');
 app.use(express.urlencoded({extended: true}));
 
 app.get('/', (req, res) =>{
+    res.setHeader('Content-Type', 'text/html');
     res.send(indexPage);
 })
 
 app.post('/submit', (req, res) => {
     const { name, email, comments } = req.body;
+    res.setHeader('Content-Type', 'text/html');
     res.send(`
+    <!DOCTYPE html>
     <html lang="en">
         <head>
             <title>Form Response</title>

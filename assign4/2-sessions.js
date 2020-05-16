@@ -24,7 +24,9 @@ app.get('/*', (req, res) =>{
                 .reduce((acc, curr)=>`${acc}&emsp;${curr}<br>`, '')
         }`;
     }
-    res.send(`Currently on route: ${req.path}${message}${previousRoutes}`);
+    res.setHeader('Content-Type', 'text/html');
+    res.send(`<!DOCTYPE html><html lang="en"><body>
+    Currently on route: ${req.path}${message}${previousRoutes}</body></html>`);
 });
 
 app.listen(port, () => console.log(`listening on port: ${port}`));
