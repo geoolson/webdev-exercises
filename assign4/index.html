@@ -3,9 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
+    />
     <title>Form Exercise</title>
   </head>
-  <body>
+  <body class="bg-dark">
     <!-- Enter your code here -->
+    <form class="bg-light border rounded w-50 mx-auto mt-5 p-3" action="/submit" method="POST">
+      <h2 class="mt-2 mb-4 text-center">Contact Form</h2>
+      <label for="name">Name *</label><br>
+      <input type="text" class="col-12" id="name" name="name" required><br>
+      <label for="email">Email *</label><br>
+      <input type="email" class="col-12" id="email" name="email" required><br>
+      <label for="anythingElse">Submit your message:</label><br>
+      <textarea rows="5" class="col-12" name="comments" id="comments"></textarea><br>
+      <input type="checkbox" name="newsletter" id="newsletter"> Sign up for the newsletter<br>
+      <div class="row">
+        <div class="col-6">
+          <input type="submit" class="btn btn-primary col-12" value="Submit">
+        </div>
+        <div class="col-6">
+          <input type="reset" class="btn btn-secondary col-12" value="Reset">
+        </div>
+      </div>
+    </form>
+  </body>
   </body>
 </html>
