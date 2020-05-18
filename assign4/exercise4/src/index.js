@@ -183,14 +183,14 @@ const Custom = () => {
     const country = data => {
         const { name, capital, region, population } = data;
         return (
-            <>
+            <li key={name}>
                 <h3>{name}</h3>
-                <ul key={name}>
-                    <li>{`Captial: ${capital}`}</li>
-                    <li>{`Region: ${region}`}</li>
-                    <li>{`Population: ${formatPop(population)}`}</li>
+                <ul>
+                    <li key={("Capital_" + name)}>{`Captial: ${capital}`}</li>
+                    <li key={("Region_" + name)}>{`Region: ${region}`}</li>
+                    <li key={("Population_" + name)}>{`Population: ${formatPop(population)}`}</li>
                 </ul>
-            </>
+            </li>
         );
     }
     const [list, setList] = useState('');
