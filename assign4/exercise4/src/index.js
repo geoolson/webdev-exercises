@@ -217,7 +217,7 @@ const Custom = () => {
                                 return
                             }
                         })();
-                        // VScode says this is unreachable, but it is.
+                        // VScode says this is unreachable, but it is reachable.
                         // It's a known bug with the linter with IIFE with try catch statements: https://github.com/microsoft/TypeScript/issues/36828
                         setList(newList);
                     }}
