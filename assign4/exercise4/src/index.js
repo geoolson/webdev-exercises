@@ -76,11 +76,24 @@ const Section = props => {
     );
 }
 
-function Home() {
+const Home = () => {
     return (
         <Section>
             <h2 className="mt-2 mb-4">REST Countries</h2>
-            <ol></ol>
+            <ul className="list-inline text-center">
+                <li className="list-inline-item">
+                    <Link className="text-dark" to="/main">Main</Link>
+                </li>
+                <li className="list-inline-item">
+                    <Link className="text-dark" to="/populous">Populous</Link>
+                </li>
+                <li className="list-inline-item">
+                    <Link className="text-dark" to="/regions">Regions</Link>
+                </li>
+                <li className="list-inline-item">
+                    <Link className="text-dark" to="/custom">Custom</Link>
+                </li>
+            </ul>
         </Section>
     );
 }
@@ -141,9 +154,7 @@ const Regions = () => {
                 .then(data => {
                     model.regions = [];
                     const regions = data.reduce((acc, country) => {
-                        const { region } = country
-                        if (region === "")
-                            return acc;
+                        const region = country.region === "" ? "N/A" : country.region;
                         if (acc.has(region)) {
                             const value = acc.get(region) + 1;
                             acc.set(region, value);
@@ -184,18 +195,14 @@ const Custom = () => {
     }
     const [list, setList] = useState('');
     useEffect(() => {
-        if (model.regions === null) {
-            res
-                .then(data => {
-                    model.countriesAll = data;
-                    const newList = (() => {
-                        return model.countriesAll
-                            .map(country)
-                            .sort((nationA, nationB) => nationA.name > nationB.name)
-                    })();
-                    setList(newList);
-                })
-        }
+        const createCountryList = () => model.countriesAll.map(country);
+        if (model.countriesAll === null)
+            res.then(data => {
+                model.countriesAll = data;
+                setList(createCountryList)
+            })
+        else
+            setList(createCountryList());
     }, []);
     return (
         <Section>
@@ -211,7 +218,6 @@ const Custom = () => {
                                         return country.name.toLowerCase().match(regex);
                                     })
                                     .map(country)
-                                    .sort((nationA, nationB) => nationA.name > nationB.name)
                             }
                             catch (e) {
                                 return
