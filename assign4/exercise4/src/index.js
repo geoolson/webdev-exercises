@@ -8,10 +8,18 @@ import {
 } from "react-router-dom";
 
 var model = {
+    countriesAll: null,
     main: null,
     populous: null,
     regions: null
 };
+
+const formatPop = num => {
+    const reversedStr = num.toString().split('').reverse().join('');
+    const commas = reversedStr.match(/.{1,3}/g).join(',');
+    return commas.split('').reverse().join('');
+};
+
 const url = 'https://restcountries.eu/rest/v2/all';
 const res = fetch(url).then(res => res.json());
 
@@ -30,6 +38,9 @@ function App() {
                         <li className="list-inline-item">
                             <Link className="text-light" to="/regions">Regions</Link>
                         </li>
+                        <li className="list-inline-item">
+                            <Link className="text-light" to="/custom">Custom</Link>
+                        </li>
                     </ul>
                 </nav>
 
@@ -44,6 +55,9 @@ function App() {
                     </Route>
                     <Route path="/regions">
                         <Regions />
+                    </Route>
+                    <Route path="/custom">
+                        <Custom />
                     </Route>
                     <Route path="/">
                         <Home />
@@ -96,11 +110,6 @@ const Main = () => {
 
 const Populous = () => {
     const [list, setList] = useState('Loading...');
-    const formatPop = num => {
-        const reversedStr = num.toString().split('').reverse().join('');
-        const commas = reversedStr.match(/.{1,3}/g).join(',');
-        return commas.split('').reverse().join('');
-    };
     useEffect(() => {
         if (model.populous === null) {
             res
@@ -118,7 +127,7 @@ const Populous = () => {
     }, []);
     return (
         <Section>
-            <h2 className="mt-2 mb-4">REST Countries Populous</h2>
+            <h2 className="mt-2 mb-4">Populous Countries</h2>
             <ul>{list}</ul>
         </Section>
     );
@@ -153,7 +162,67 @@ const Regions = () => {
     }, []);
     return (
         <Section>
-            <h2 className="mt-2 mb-4">REST Countries Regions</h2>
+            <h2 className="mt-2 mb-4">Country Regions</h2>
+            <ul>{list}</ul>
+        </Section>
+    );
+}
+
+const Custom = () => {
+    const country = data => {
+        const { name, capital, region, population } = data;
+        return (
+            <>
+                <h3>{name}</h3>
+                <ul key={name}>
+                    <li>{`Captial: ${capital}`}</li>
+                    <li>{`Region: ${region}`}</li>
+                    <li>{`Population: ${formatPop(population)}`}</li>
+                </ul>
+            </>
+        );
+    }
+    const [list, setList] = useState('');
+    useEffect(() => {
+        if (model.regions === null) {
+            res
+                .then(data => {
+                    model.countriesAll = data;
+                    const newList = (() => {
+                        return model.countriesAll
+                            .map(country)
+                            .sort((nationA, nationB) => nationA.name > nationB.name)
+                    })();
+                    setList(newList);
+                })
+        }
+    }, []);
+    return (
+        <Section>
+            <h2 className="mt-2 mb-4">Countries Search</h2>
+            <form onSubmit={e => e.preventDefault()}>
+                Country Name: <input type="text"
+                    onChange={e => {
+                        const newList = (() => {
+                            try {
+                                return model.countriesAll
+                                    .filter(country => {
+                                        const regex = new RegExp(`^${e.target.value.toLocaleLowerCase()}`);
+                                        return country.name.toLowerCase().match(regex);
+                                    })
+                                    .map(country)
+                                    .sort((nationA, nationB) => nationA.name > nationB.name)
+                            }
+                            catch (e) {
+                                return
+                            }
+                        })();
+                        // VScode says this is unreachable, but it is.
+                        // It's a known bug with the linter with IIFE with try catch statements: https://github.com/microsoft/TypeScript/issues/36828
+                        setList(newList);
+                    }}
+                />
+            </form>
             <ul>{list}</ul>
         </Section>
     );
